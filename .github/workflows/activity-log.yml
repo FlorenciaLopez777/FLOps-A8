@@ -1,0 +1,20 @@
+name: Update GitHub Activity
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"   # Corre cada 6 horas
+  workflow_dispatch:        # Para ejecutarlo manualmente
+
+jobs:
+  update-activity:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update GitHub activity in README
+        uses: TheDanniCraft/activity-log@v1
+        with:
+          GITHUB_USERNAME: "FlorenciaLopez777"
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
